@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Amazon FBA 利润计算器｜下载安装</title>
+  <style>
+    :root { color-scheme: light; --ink:#18323a; --muted:#66777c; --paper:#fffdf9; --line:#e3d9c9; --accent:#0e766e; --accent-2:#e9f4f1; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink); background:linear-gradient(135deg,#f7f2e9 0%,#fbfaf7 48%,#edf7f4 100%); }
+    main { max-width:930px; margin:0 auto; padding:74px 24px 52px; }
+    .eyebrow { color:var(--accent); font-weight:750; letter-spacing:.08em; font-size:13px; }
+    h1 { margin:13px 0 12px; font-size:clamp(30px,5vw,49px); letter-spacing:-.045em; line-height:1.1; }
+    .intro { max-width:650px; margin:0; color:var(--muted); font-size:17px; line-height:1.75; }
+    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:42px 0 28px; }
+    .card { display:flex; flex-direction:column; min-height:292px; padding:28px; border:1px solid var(--line); border-radius:22px; background:rgba(255,253,249,.9); box-shadow:0 16px 40px rgba(38,67,61,.07); }
+    .badge { width:max-content; padding:6px 10px; border-radius:99px; color:var(--accent); background:var(--accent-2); font-size:13px; font-weight:700; }
+    h2 { margin:22px 0 8px; font-size:25px; letter-spacing:-.03em; }
+    .card p { min-height:48px; margin:0; color:var(--muted); line-height:1.6; }
+    .download { display:inline-flex; justify-content:center; align-items:center; min-height:47px; margin-top:auto; padding:12px 16px; border-radius:12px; background:var(--accent); color:#fff; font-weight:750; text-decoration:none; }
+    .download:hover { filter:brightness(.94); }
+    .download[aria-disabled="true"] { background:#dad5cb; color:#7d7972; cursor:not-allowed; }
+    .notice { padding:21px 23px; border-radius:16px; background:rgba(255,253,249,.76); border:1px solid var(--line); color:var(--muted); line-height:1.75; }
+    .notice strong { color:var(--ink); }
+    footer { margin-top:28px; color:#859195; font-size:13px; }
+    @media (max-width:650px) { main { padding-top:48px; } .grid { grid-template-columns:1fr; margin-top:30px; } .card { min-height:242px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">已购用户专用下载页</div>
+    <h1>Amazon FBA 利润计算器</h1>
+    <p class="intro">请选择你的电脑系统下载安装包。安装完成后输入卖家提供的激活码，即可在一台设备上完成授权。</p>
+
+    <section class="grid" aria-label="选择操作系统">
+      <article class="card">
+        <span class="badge">当前可下载</span>
+        <h2>macOS 版</h2>
+        <p>适用于 Apple 芯片 Mac（M1、M2、M3、M4）。首次打开如出现系统提醒，请右键应用后选择“打开”。</p>
+        <!-- 发布时替换为 R2/CDN 上的 macOS DMG 地址。 -->
+        <a class="download" id="mac-download" href="#" aria-disabled="true">macOS 安装包准备中</a>
+      </article>
+      <article class="card">
+        <span class="badge">即将上线</span>
+        <h2>Windows 版</h2>
+        <p>适用于 Windows 10 / 11 64 位。Windows 安装包发布后，此处会直接显示下载按钮。</p>
+        <a class="download" href="#" aria-disabled="true" onclick="return false">Windows 版即将上线</a>
+      </article>
+    </section>
+
+    <section class="notice">
+      <strong>授权说明：</strong>每个激活码仅限一台电脑永久使用；首次需联网激活，之后最长可离线使用 14 天。每份授权含一次免费换机。退款后授权会被撤销。
+    </section>
+    <footer>请勿转发安装包或激活码。软件著作权及全部知识产权归卖家所有。</footer>
+  </main>
+</body>
+</html>
