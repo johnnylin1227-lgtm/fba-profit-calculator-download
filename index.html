@@ -2,55 +2,141 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Amazon FBA 利润计算器｜下载安装</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FBA 利润计算器</title>
   <style>
-    :root { color-scheme: light; --ink:#18323a; --muted:#66777c; --paper:#fffdf9; --line:#e3d9c9; --accent:#0e766e; --accent-2:#e9f4f1; }
-    * { box-sizing:border-box; }
-    body { margin:0; min-height:100vh; font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif; color:var(--ink); background:linear-gradient(135deg,#f7f2e9 0%,#fbfaf7 48%,#edf7f4 100%); }
-    main { max-width:930px; margin:0 auto; padding:74px 24px 52px; }
-    .eyebrow { color:var(--accent); font-weight:750; letter-spacing:.08em; font-size:13px; }
-    h1 { margin:13px 0 12px; font-size:clamp(30px,5vw,49px); letter-spacing:-.045em; line-height:1.1; }
-    .intro { max-width:650px; margin:0; color:var(--muted); font-size:17px; line-height:1.75; }
-    .grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; margin:42px 0 28px; }
-    .card { display:flex; flex-direction:column; min-height:292px; padding:28px; border:1px solid var(--line); border-radius:22px; background:rgba(255,253,249,.9); box-shadow:0 16px 40px rgba(38,67,61,.07); }
-    .badge { width:max-content; padding:6px 10px; border-radius:99px; color:var(--accent); background:var(--accent-2); font-size:13px; font-weight:700; }
-    h2 { margin:22px 0 8px; font-size:25px; letter-spacing:-.03em; }
-    .card p { min-height:48px; margin:0; color:var(--muted); line-height:1.6; }
-    .download { display:inline-flex; justify-content:center; align-items:center; min-height:47px; margin-top:auto; padding:12px 16px; border-radius:12px; background:var(--accent); color:#fff; font-weight:750; text-decoration:none; }
-    .download:hover { filter:brightness(.94); }
-    .download[aria-disabled="true"] { background:#dad5cb; color:#7d7972; cursor:not-allowed; }
-    .notice { padding:21px 23px; border-radius:16px; background:rgba(255,253,249,.76); border:1px solid var(--line); color:var(--muted); line-height:1.75; }
-    .notice strong { color:var(--ink); }
-    footer { margin-top:28px; color:#859195; font-size:13px; }
-    @media (max-width:650px) { main { padding-top:48px; } .grid { grid-template-columns:1fr; margin-top:30px; } .card { min-height:242px; } }
+    :root { --ink:#1a2f37; --muted:#647278; --paper:#f6f1e8; --card:#fffdf9; --line:#ded5c8; --accent:#c7683c; --teal:#2c6b68; --green:#2e704c; --red:#b43d38; --shadow:0 14px 40px rgba(41,38,29,.10); }
+    * { box-sizing:border-box; } body { margin:0; background:radial-gradient(circle at 8% 4%,#f4dec7 0,transparent 30rem),var(--paper); color:var(--ink); font-family:"Avenir Next","PingFang SC","Noto Sans CJK SC",sans-serif; }
+    header { padding:48px max(24px,calc((100vw - 1200px)/2)); background:linear-gradient(115deg,#193c42,#2d6966); color:#fffdf9; } header p { margin:0 0 9px; letter-spacing:.16em; font-size:12px; font-weight:700; opacity:.78; } h1 { margin:0; font-size:clamp(28px,4vw,44px); letter-spacing:-.04em; }
+    main { max-width:1200px; margin:0 auto; padding:28px 20px 56px; } .layout { display:grid; grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr); gap:24px; align-items:start; } .panel { background:var(--card); border:1px solid var(--line); border-radius:15px; box-shadow:var(--shadow); overflow:hidden; } .panel-title { padding:18px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:baseline; gap:12px; } .panel-title h2 { margin:0; font-size:18px; letter-spacing:-.02em; } .panel-title span { color:var(--muted); font-size:12px; }
+    .section { padding:18px 20px 2px; } .section h3 { margin:0 0 14px; font-size:13px; letter-spacing:.12em; color:var(--teal); } .fields { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px 16px; } label { display:grid; gap:6px; font-size:13px; color:#435057; font-weight:650; } label small { color:var(--muted); font-weight:500; font-size:11px; } .field-spacer { visibility:hidden; } .wide { grid-column:1/-1; }
+    .input-wrap { position:relative; } input { width:100%; border:1px solid #cfc6b9; background:#fff; border-radius:8px; padding:10px 45px 10px 11px; color:var(--ink); font:inherit; font-size:14px; outline:none; transition:border-color .16s,box-shadow .16s; } input:focus { border-color:var(--accent); box-shadow:0 0 0 3px rgba(199,104,60,.14); } input.text { padding-right:11px; } .unit { position:absolute; right:11px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:12px; pointer-events:none; } .note-prefix { position:absolute; left:11px; top:50%; transform:translateY(-50%); z-index:1; color:#435057; font-size:13px; font-weight:750; pointer-events:none; } .note-wrap input.text { padding-left:52px; } .package-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; } .package-grid.outer { grid-template-columns:repeat(5,minmax(0,1fr)); } .dimension { position:relative; } .dimension span { position:absolute; left:10px; top:7px; z-index:1; color:var(--muted); font-size:10px; pointer-events:none; } .dimension input { padding:20px 8px 7px; text-align:center; }
+    .calcs { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; margin-bottom:16px; } .calc { grid-column:span 2; border:1px solid #c8ddd7; background:#eef6f2; border-radius:9px; padding:12px; } .calc.half-row { grid-column:span 3; } .calc span { color:#48645f; display:block; font-size:11px; line-height:1.4; } .calc strong { display:block; font-size:19px; letter-spacing:-.03em; margin-top:4px; } .calc small { display:block; color:var(--muted); margin-top:2px; font-size:10px; }
+    .actions { padding:21px 20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; } button { border:0; border-radius:8px; padding:11px 15px; font:inherit; font-size:13px; font-weight:750; cursor:pointer; } .primary { background:var(--accent); color:white; } .secondary { background:#e8e1d5; color:var(--ink); } .template-status { color:var(--muted); font-size:12px; }
+    .summary { position:sticky; top:18px; } .metrics { display:grid; gap:0; } .metric { padding:18px 20px; border-bottom:1px solid var(--line); } .metric:last-child { border-bottom:0; } .metric label { color:var(--muted); font-size:12px; font-weight:650; } .metric output { display:block; margin-top:5px; font-size:27px; font-weight:800; letter-spacing:-.045em; } .metric small { display:block; margin-top:5px; font-size:12px; color:var(--muted); line-height:1.45; } .profit output { color:var(--red); } .loss output { color:var(--green); }
+    .breakdown { margin-top:24px; } table { width:100%; border-collapse:collapse; font-size:13px; } th,td { border-bottom:1px solid var(--line); padding:11px 6px; text-align:right; } th:first-child,td:first-child { text-align:left; } th { color:var(--muted); font-weight:650; font-size:12px; } tr.logic-divider > * { border-bottom:3px solid var(--red); } .formula { margin:20px 0 0; padding:14px; background:#edf4f1; color:#375552; border-radius:9px; font-size:12px; line-height:1.65; } .warning { margin:0 0 16px; padding:12px 14px; border-radius:9px; background:#fff1dd; border:1px solid #dfb98c; color:#6e4623; font-size:12px; line-height:1.55; }
+  footer { max-width:1200px; margin:0 auto; padding:0 20px 42px; color:var(--muted); font-size:12px; line-height:1.65; } #licenseGate { position:fixed; z-index:9999; inset:0; display:grid; place-items:center; padding:24px; background:rgba(20,42,47,.78); backdrop-filter:blur(8px); } .license-card { width:min(440px,100%); padding:30px; border-radius:18px; background:#fffdf9; box-shadow:0 24px 80px rgba(0,0,0,.3); } .license-card h1 { margin:0 0 10px; font-size:27px; } .license-kicker { margin:0 0 8px; color:var(--teal); font-size:11px; font-weight:800; letter-spacing:.13em; } .license-copy { color:var(--muted); font-size:13px; line-height:1.6; } .license-card label { margin-top:18px; } .license-card label input { margin-top:6px; padding-right:12px; text-transform:uppercase; } .license-card button { width:100%; margin-top:14px; background:var(--accent); color:white; } .license-card #licenseMessage { min-height:20px; margin:12px 0 4px; color:var(--red); font-size:12px; } .license-card small { color:var(--muted); font-size:11px; line-height:1.5; } html.license-locked > body > :not(#licenseGate) { filter:blur(4px); user-select:none; pointer-events:none; } @media(max-width:820px){.layout{grid-template-columns:1fr}.summary{position:static}header{padding-top:35px;padding-bottom:35px}.package-grid.outer{grid-template-columns:repeat(3,minmax(0,1fr))}} @media(max-width:500px){.fields,.calcs{grid-template-columns:1fr}.calc,.calc.half-row{grid-column:auto}.wide{grid-column:auto}.package-grid,.package-grid.outer{grid-template-columns:repeat(2,1fr)}main{padding-left:14px;padding-right:14px}.section,.panel-title,.actions{padding-left:15px;padding-right:15px}}
   </style>
 </head>
-<body>
-  <main>
-    <div class="eyebrow">已购用户专用下载页</div>
-    <h1>Amazon FBA 利润计算器</h1>
-    <p class="intro">请选择你的电脑系统下载安装包。安装完成后输入卖家提供的激活码，即可在一台设备上完成授权。</p>
-
-    <section class="grid" aria-label="选择操作系统">
-      <article class="card">
-        <span class="badge">当前可下载</span>
-        <h2>macOS 版</h2>
-        <p>适用于 Apple 芯片 Mac（M1、M2、M3、M4）。首次打开如出现系统提醒，请右键应用后选择“打开”。</p>
-        <a class="download" id="mac-download" href="https://github.com/johnnylin1227-lgtm/fba-profit-calculator-download/releases/download/v1.0.0/Amazon-FBA-Profit-Calculator-1.0.0-macos-arm64-fixed.dmg">下载 macOS 安装包</a>
-      </article>
-      <article class="card">
-        <span class="badge">当前可下载</span>
-        <h2>Windows 版</h2>
-        <p>适用于 Windows 10 / 11 64 位。安装完成后输入卖家提供的激活码即可使用。</p>
-        <a class="download" href="https://github.com/johnnylin1227-lgtm/fba-profit-calculator-download/releases/download/v1.0.0/Amazon-FBA-Profit-Calculator-1.0.0-windows-x64-setup.exe">下载 Windows 安装包</a>
-      </article>
+<body data-new-product="true">
+  <header><p>FBA / PROFIT / WEB CALCULATOR</p><h1>FBA 利润计算器</h1></header>
+  <main><div class="layout">
+    <section class="panel">
+      <div class="panel-title"><h2>产品与成本变量</h2><span>手工输入，自动计算</span></div>
+      <div class="section"><h3>产品与销售</h3><div class="fields">
+        <label>产品名称<input class="text" id="productName" value="COZIHAUS 改款 20pcs 衣架"></label>
+        <label>SKU / 备注<input class="text" id="sku" value="示例：HANGER-20-WHITE"></label>
+        <label>本次计算产品数量<div class="input-wrap"><input id="quantity" inputmode="numeric" value="100"><span class="unit">个</span></div></label>
+        <label>产品备注<input class="text" id="pieces" value="" placeholder="例如：20 pcs / 白色 / 改款"></label>
+        <label>亚马逊售价<div class="input-wrap"><input id="salePrice" inputmode="decimal" value="26.00"><span class="unit">USD</span></div></label>
+        <label>汇率<div class="input-wrap"><input id="fx" inputmode="decimal" value="6.77"><span class="unit">RMB/USD</span></div></label>
+        <label class="wide">销售佣金率<div class="input-wrap"><input id="referralRate" inputmode="decimal" value="15.00"><span class="unit">%</span></div></label>
+      </div></div>
+      <div class="section"><h3>包装尺寸与重量</h3><div class="fields">
+        <label class="wide">内箱尺寸与重量<small>公制单位：厘米 cm、千克 kg。用于 Amazon FBA 体积重和配送费预估。</small><div class="package-grid"><div class="dimension"><span>长 / cm</span><input id="length" inputmode="decimal" value="41.00" aria-label="内箱长 cm"></div><div class="dimension"><span>宽 / cm</span><input id="width" inputmode="decimal" value="25.00" aria-label="内箱宽 cm"></div><div class="dimension"><span>高 / cm</span><input id="height" inputmode="decimal" value="7.50" aria-label="内箱高 cm"></div><div class="dimension"><span>毛重 / kg</span><input id="grossWeight" inputmode="decimal" value="1.26" aria-label="内箱毛重 kg"></div></div></label>
+        <label class="wide">外箱尺寸、重量与装箱数<small>海运实重、体积重、计费重及头程运费均按外箱数据计算。</small><div class="package-grid outer"><div class="dimension"><span>长 / cm</span><input id="outerLength" inputmode="decimal" value="" aria-label="外箱长 cm"></div><div class="dimension"><span>宽 / cm</span><input id="outerWidth" inputmode="decimal" value="" aria-label="外箱宽 cm"></div><div class="dimension"><span>高 / cm</span><input id="outerHeight" inputmode="decimal" value="" aria-label="外箱高 cm"></div><div class="dimension"><span>毛重 / kg</span><input id="outerGrossWeight" inputmode="decimal" value="" aria-label="外箱毛重 kg"></div><div class="dimension"><span>每个外箱可装产品数</span><input id="innerBoxesPerOuter" inputmode="numeric" value="" aria-label="每个外箱可装产品数"></div></div></label>
+        <label class="wide"><div class="input-wrap note-wrap"><span class="note-prefix">备注</span><input class="text" id="packagingNote" value="" placeholder="例如：外箱材质、装箱方式或特殊要求" aria-label="包装备注"></div></label>
+      </div></div>
+      <div class="section"><h3>自动计算的重量与费用</h3><div class="calcs">
+        <div class="calc"><span>海运实重</span><strong id="seaActualWeight">-</strong><small>取外箱实际毛重</small></div>
+        <div class="calc"><span>海运体积重</span><strong id="firstLegDim">-</strong><small>外箱长 × 宽 × 高(cm) ÷ 6000，向上进位至两位小数</small></div>
+        <div class="calc"><span>海运计费重</span><strong id="chargeableWeight">-</strong><small>外箱实重与体积重取大值</small></div>
+        <div class="calc"><span>FBA 实重</span><strong id="fbaActualWeight">-</strong><small>单套实际毛重</small></div>
+        <div class="calc"><span>Amazon FBA 体积重</span><strong id="amzDimLb">-</strong><small id="amzDimKg">单品长宽高(英寸) ÷ 139，向上进位至两位小数</small></div>
+        <div class="calc"><span>FBA 计费重</span><strong id="fbaShipWeight">-</strong><small>单品实重与 Amazon 体积重取大值</small></div>
+        <div class="calc half-row"><span>本批海运头程运费预估</span><strong id="firstLegOutput">-</strong><small>外箱计费重 × 本批外箱数 × 海运报价</small></div>
+        <div class="calc half-row"><span>FBA 配送费预估</span><strong id="fbaFeeOutput">-</strong><small id="fbaFeeRule">按当前标准费率自动计算</small></div>
+      </div><div id="cartonWarning" class="warning" hidden></div><div id="fbaWarning" class="warning" hidden></div></div>
+      <div class="section"><h3>国内采购与物流成本</h3><div class="fields">
+        <label>产品采购价<div class="input-wrap"><input id="productCost" inputmode="decimal" value="32.44"><span class="unit">RMB/套</span></div></label>
+        <label>包装成本<div class="input-wrap"><input id="boxCost" inputmode="decimal" value="7.08"><span class="unit">RMB/套</span></div></label>
+        <label>代打包、贴标、装箱<div class="input-wrap"><input id="packingCost" inputmode="decimal" value="2.50"><span class="unit">RMB/套</span></div></label>
+        <label>海运报价<div class="input-wrap"><input id="freightRate" inputmode="decimal" value="13.00"><span class="unit">RMB/kg</span></div></label>
+        <label class="wide">入库配置 / 预处理费<div class="input-wrap"><input id="inboundCost" inputmode="decimal" value="0.00"><span class="unit">RMB/套</span></div></label>
+        <label>其他杂费<div class="input-wrap"><input id="otherCost" inputmode="decimal" value="0.00"><span class="unit">RMB/套</span></div></label>
+        <label><span class="field-spacer" aria-hidden="true">备注</span><div class="input-wrap note-wrap"><span class="note-prefix">备注</span><input class="text" id="otherCostNote" value="" placeholder="例如：检验、样品、额外贴标" aria-label="其他杂费备注"></div></label>
+      </div></div>
+      <div class="section"><h3>境外运营成本</h3><div class="fields">
+        <label>广告费<small>按每套销售均摊</small><div class="input-wrap"><input id="adCost" inputmode="decimal" value="5.00"><span class="unit">USD/单</span></div></label>
+        <label>退货、仓储和杂费<small>按每套销售均摊</small><div class="input-wrap"><input id="returnStorageCost" inputmode="decimal" value="0.00"><span class="unit">USD/套</span></div></label>
+      </div></div>
+      <div class="actions"><button class="secondary" id="saveTemplate">保存模板</button><button class="secondary" id="loadTemplate">调取模板</button><button class="secondary" id="exportExcel">生成 Excel 报表</button><button class="secondary" id="clear">清空为新产品</button><span class="template-status" id="templateStatus" aria-live="polite"></span><input id="templateFile" type="file" accept="application/json,.json" hidden></div>
     </section>
-
-    <section class="notice">
-      <strong>授权说明：</strong>每个激活码仅限一台电脑永久使用；首次联网激活后可永久使用。软件使用时请保持联网；临时断网仍可继续使用最多 14 天，恢复联网后自动完成核验并续期。每份授权含一次免费换机；退款后授权会被撤销。
-    </section>
-    <footer>请勿转发安装包或激活码。软件著作权及全部知识产权归卖家所有。</footer>
-  </main>
+    <aside class="summary"><section class="panel"><div class="panel-title"><h2>利润结果</h2><span id="profitStatus">本批次测算</span></div><div class="metrics">
+      <div class="metric"><label>国内总投入</label><output id="domesticTotal">-</output><small>采购、包装、打包、海运头程费、入库配置、其他杂费</small></div>
+      <div class="metric"><label>境外总成本</label><output id="overseasTotal">-</output><small>佣金、FBA 配送费、广告、退货仓储杂费</small></div>
+      <div class="metric"><label>销售回款</label><output id="revenueTotal">-</output><small>按售价 × 数量，未扣费用</small></div>
+      <div class="metric" id="profitBox"><label>扣除成本后的利润</label><output id="profitTotal">-</output><small id="marginNote">-</small></div>
+    </div></section><section class="panel breakdown"><div class="panel-title"><h2>单套明细</h2><span>RMB / USD</span></div><table><thead><tr><th>项目</th><th>每套 RMB</th><th class="usd-column">每套 USD</th><th>本批合计 RMB</th></tr></thead><tbody id="tableBody"></tbody></table><p class="formula" id="formula">公式加载中…</p></section></aside>
+  </div></main>
+  <footer>FBA 预估规则：截至 2026-08，面向美国站、非服装、售价 $10-50、标准尺寸且 FBA 计费重在 3-20 lb 的商品，采用 $6.92 + 超过 3 lb 后每 4 oz 加 $0.08，并计入 3.5% 燃油与物流附加费。超出适用范围时不会伪造估算，须以 Seller Central Revenue Calculator 为准。<br><br>本工具为独立第三方计算工具，非 Amazon 官方产品，与 Amazon 无隶属、授权或合作关系。FBA 及 Amazon 为其各自权利人的商标。</footer>
+  <script>
+    const ids=['productName','sku','quantity','pieces','salePrice','fx','referralRate','length','width','height','grossWeight','outerLength','outerWidth','outerHeight','outerGrossWeight','innerBoxesPerOuter','packagingNote','productCost','boxCost','packingCost','freightRate','inboundCost','otherCost','otherCostNote','adCost','returnStorageCost'];
+    const blank=Object.fromEntries(ids.map(id=>[id,'']));
+    const number=id=>Math.max(0,Number(String(document.getElementById(id).value).replace(/,/g,''))||0); const money=(value,currency,locale)=>`${value<0?'-':''}${new Intl.NumberFormat(locale,{style:'currency',currency,minimumFractionDigits:2}).format(Math.abs(value))}`; const cny=value=>money(value,'CNY','zh-CN'); const usd=value=>money(value,'USD','en-US'); const two=value=>Number(value||0).toFixed(2); const ceilTwo=value=>Math.ceil((Number(value||0)-Number.EPSILON)*100)/100;
+    function fbaEstimate(weightLb,l,w,h){const standard=l<=45.72&&w<=35.56&&h<=20.32&&weightLb>0&&weightLb<=9.07; if(!standard||weightLb<1.36)return {fee:0,valid:false}; const base=6.92+Math.ceil(Math.max(0,weightLb-3)*4)*.08; return {fee:base*1.035,valid:true};}
+    function render(){
+      const q=number('quantity'),fx=number('fx'),sale=number('salePrice'),l=number('length'),w=number('width'),h=number('height'),actualKg=number('grossWeight'),outerL=number('outerLength'),outerW=number('outerWidth'),outerH=number('outerHeight'),outerActualKg=number('outerGrossWeight'),innerBoxes=number('innerBoxesPerOuter');
+      const actualLb=actualKg*2.20462262, amzDimLb=ceilTwo((l/2.54)*(w/2.54)*(h/2.54)/139), amzDimKg=amzDimLb/2.20462262, fbaWeight=Math.max(actualLb,amzDimLb);
+      const firstDim=ceilTwo(outerL*outerW*outerH/6000), chargeableKg=Math.max(outerActualKg,firstDim), outerCartons=innerBoxes>0?Math.ceil(q/innerBoxes):0, firstLegTotal=chargeableKg*outerCartons*number('freightRate'), firstLeg=q>0?firstLegTotal/q:0;
+      const fba=fbaEstimate(fbaWeight,l,w,h), referral=sale*number('referralRate')/100*fx, fbaCny=fba.fee*fx, ads=number('adCost')*fx, misc=number('returnStorageCost')*fx, revenue=sale*fx;
+      const domestic=number('productCost')+number('boxCost')+number('packingCost')+firstLeg+number('inboundCost')+number('otherCost'), overseas=referral+fbaCny+ads+misc, profit=revenue-domestic-overseas;
+      document.getElementById('amzDimLb').textContent=two(amzDimLb)+' lb'; document.getElementById('amzDimKg').textContent=two(amzDimKg)+' kg（按 /139 换算）'; document.getElementById('fbaActualWeight').textContent=two(actualLb)+' lb'; document.getElementById('fbaShipWeight').textContent=two(fbaWeight)+' lb'; document.getElementById('firstLegDim').textContent=two(firstDim)+' kg/外箱'; document.getElementById('seaActualWeight').textContent=two(outerActualKg)+' kg/外箱'; document.getElementById('chargeableWeight').textContent=two(chargeableKg)+' kg/外箱'; document.getElementById('firstLegOutput').textContent=cny(firstLegTotal); const cartonWarning=document.getElementById('cartonWarning'); const hasOuter=outerL>0&&outerW>0&&outerH>0&&outerActualKg>0&&innerBoxes>0; cartonWarning.hidden=hasOuter&&(!q||q%innerBoxes===0); cartonWarning.textContent=!hasOuter?'请完整填写外箱长、宽、高、毛重和每个外箱可装产品数，海运费用才能按外箱计算。':`本次 ${two(q)} 个产品无法整除每外箱 ${two(innerBoxes)} 个产品；将按 ${outerCartons} 个外箱计费，最后一箱会有空位。`;
+      document.getElementById('fbaFeeOutput').textContent=fba.valid?usd(fba.fee):'需核算'; document.getElementById('fbaFeeRule').textContent=fba.valid?'自动估算，已含 3.5% 附加费':'超出自动预估适用范围'; const warning=document.getElementById('fbaWarning'); warning.hidden=fba.valid; warning.textContent='此包装尺寸或重量不属于本页的标准尺寸 3-20 lb 自动估算范围。请以 Seller Central 的 Revenue Calculator 显示的 FBA 配送费为准。';
+      document.getElementById('domesticTotal').textContent=cny(domestic*q); document.getElementById('overseasTotal').textContent=cny(overseas*q); document.getElementById('revenueTotal').textContent=cny(revenue*q)+' / '+usd(sale*q); document.getElementById('profitTotal').textContent=cny(profit*q); const totalCost=domestic+overseas; document.getElementById('marginNote').textContent=`单套 ${cny(profit)} ｜ 利润率 ${revenue?(profit/revenue*100).toFixed(1):'0.0'}% ｜ ROI ${totalCost?(profit/totalCost*100).toFixed(1):'0.0'}% ｜ 广告盈亏上限 ${usd(Math.max(0,(revenue-domestic-referral-fbaCny)/fx))}/单`;
+      document.getElementById('profitBox').className='metric '+(profit>=0?'profit':'loss'); const rows=[['销售回款',revenue,revenue*q],['产品采购',-number('productCost'),-number('productCost')*q],['包装成本',-number('boxCost'),-number('boxCost')*q],['打包 / 贴标 / 装箱',-number('packingCost'),-number('packingCost')*q],['海运头程运费',-firstLeg,-firstLeg*q],['入库配置 / 预处理',-number('inboundCost'),-number('inboundCost')*q],['其他杂费',-number('otherCost'),-number('otherCost')*q],['销售佣金',-referral,-referral*q],['FBA 配送费',-fbaCny,-fbaCny*q],['广告费',-ads,-ads*q],['退货、仓储和杂费',-misc,-misc*q],['净利润',profit,profit*q]];
+      document.getElementById('tableBody').innerHTML=rows.map((r,i)=>`<tr class="${[0,6,10].includes(i)?'logic-divider':''}"${i===rows.length-1?' style="font-weight:800"':''}><td>${r[0]}</td><td>${cny(r[1])}</td><td class="usd-column">${usd(fx?r[1]/fx:0)}</td><td>${cny(r[2])}</td></tr>`).join(''); document.getElementById('formula').textContent=`单套利润 = 销售额 ${cny(revenue)} − 国内成本 ${cny(domestic)} − 境外成本 ${cny(overseas)} = ${cny(profit)}。FBA 计费重 ${two(fbaWeight)} lb；海运计费重 ${two(chargeableKg)} kg/外箱，共 ${outerCartons} 个外箱；本批海运头程 ${cny(firstLegTotal)}。`;
+    }
+    function setTemplateStatus(message){document.getElementById('templateStatus').textContent=message;}
+    function applyValues(values){ids.forEach(id=>{if(Object.prototype.hasOwnProperty.call(values,id))document.getElementById(id).value=values[id];});render();}
+    function safeFileName(value){return String(value||'amazon-fba-template').trim().replace(/[^a-zA-Z0-9\u4e00-\u9fff_-]+/g,'-').slice(0,60)||'amazon-fba-template';}
+    const escapeXml=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[char]));
+    function exportExcelReport(){
+      const value=id=>document.getElementById(id)?.value?.trim()||''; const text=id=>document.getElementById(id)?.textContent?.trim()||'';
+      const cell=(value,style='')=>`<Cell${style?` ss:StyleID="${style}"`:''}><Data ss:Type="String">${escapeXml(value)}</Data></Cell>`;
+      const row=(cells,style='')=>`<Row${style?` ss:StyleID="${style}"`:''}>${cells.map(item=>cell(item)).join('')}</Row>`;
+      const title=value=>`<Row><Cell ss:StyleID="Title" ss:MergeAcross="3"><Data ss:Type="String">${escapeXml(value)}</Data></Cell></Row>`;
+      const pairs=[['产品名称',value('productName')],['SKU / 备注',value('sku')],['产品备注',value('pieces')],['本次计算产品数量',value('quantity')],['亚马逊售价',value('salePrice')+' USD'],['汇率',value('fx')+' RMB/USD'],['销售佣金率',value('referralRate')+'%'],['内箱尺寸',`${value('length')} × ${value('width')} × ${value('height')} cm`],['内箱毛重',value('grossWeight')+' kg'],['外箱尺寸',`${value('outerLength')} × ${value('outerWidth')} × ${value('outerHeight')} cm`],['外箱毛重',value('outerGrossWeight')+' kg'],['每个外箱可装产品数',value('innerBoxesPerOuter')],['包装备注',value('packagingNote')],['产品采购价',value('productCost')+' RMB/套'],['包装成本',value('boxCost')+' RMB/套'],['打包 / 贴标 / 装箱',value('packingCost')+' RMB/套'],['海运报价',value('freightRate')+' RMB/kg'],['入库配置 / 预处理费',value('inboundCost')+' RMB/套'],['其他杂费',value('otherCost')+' RMB/套'],['其他杂费备注',value('otherCostNote')],['广告费',value('adCost')+' USD/单'],['退货、仓储和杂费',value('returnStorageCost')+' USD/套']];
+      const weights=[['海运实重',text('seaActualWeight')],['海运体积重',text('firstLegDim')],['海运计费重',text('chargeableWeight')],['FBA 实重',text('fbaActualWeight')],['Amazon FBA 体积重',text('amzDimLb')+' / '+text('amzDimKg')],['FBA 计费重',text('fbaShipWeight')],['本批海运头程运费',text('firstLegOutput')],['FBA 配送费预估',text('fbaFeeOutput')]];
+      const results=[['国内总投入',text('domesticTotal')],['境外总成本',text('overseasTotal')],['销售回款',text('revenueTotal')],['扣除成本后的利润',text('profitTotal')],['利润率 / ROI / 广告盈亏上限',text('marginNote')]];
+      const detailRows=Array.from(document.querySelectorAll('#tableBody tr')).map(tr=>Array.from(tr.cells).map(td=>td.textContent.trim()));
+      const xml=`<?xml version="1.0" encoding="UTF-8"?><?mso-application progid="Excel.Sheet"?><Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"><Styles><Style ss:ID="Default"><Font ss:FontName="Arial" ss:Size="10"/></Style><Style ss:ID="Title"><Font ss:Bold="1" ss:Size="14" ss:Color="#1A2F37"/></Style><Style ss:ID="Header"><Font ss:Bold="1" ss:Color="#FFFFFF"/><Interior ss:Color="#2C6B68" ss:Pattern="Solid"/></Style></Styles><Worksheet ss:Name="利润报表"><Table><Column ss:Width="145"/><Column ss:Width="190"/><Column ss:Width="105"/><Column ss:Width="125"/>${title('FBA 利润计算器报表')}${row(['生成时间',new Date().toLocaleString('zh-CN')])}${title('产品与成本输入')}${row(['项目','数值'],'Header')}${pairs.map(item=>row(item)).join('')}${title('自动计算的重量与费用')}${row(['项目','结果'],'Header')}${weights.map(item=>row(item)).join('')}${title('利润汇总')}${row(['项目','结果'],'Header')}${results.map(item=>row(item)).join('')}${title('单套利润明细')}${row(['项目','每套 RMB','每套 USD','本批合计 RMB'],'Header')}${detailRows.map(items=>row(items)).join('')}</Table></Worksheet></Workbook>`;
+      const url=URL.createObjectURL(new Blob(['\ufeff'+xml],{type:'application/vnd.ms-excel;charset=utf-8'})); const link=document.createElement('a'); link.href=url; link.download=`${safeFileName(value('productName'))}-利润报表.xls`; link.click(); setTimeout(()=>URL.revokeObjectURL(url),0); setTemplateStatus('Excel 报表已下载到本机。');
+    }
+    document.querySelectorAll('input:not([readonly]):not([type="file"])').forEach(input=>{input.addEventListener('input',render); input.addEventListener('blur',()=>{if(!input.classList.contains('text')&&input.value.trim()!=='')input.value=two(input.value);render();});});
+    document.getElementById('clear').addEventListener('click',()=>{const liveFx=document.getElementById('fx').value;applyValues(blank);document.getElementById('fx').value=liveFx;render();setTemplateStatus('已清空，已保留实时汇率。');});
+    document.getElementById('saveTemplate').addEventListener('click',()=>{const fields=Object.fromEntries(ids.map(id=>[id,document.getElementById(id).value]));const payload={version:1,type:'FBA Profit Calculator Template',exportedAt:new Date().toISOString(),fields};const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download=`${safeFileName(fields.productName)}-FBA利润模板.json`;link.click();setTimeout(()=>URL.revokeObjectURL(url),0);setTemplateStatus('模板已下载到本机。');});
+    document.getElementById('loadTemplate').addEventListener('click',()=>document.getElementById('templateFile').click());
+    document.getElementById('exportExcel').addEventListener('click',exportExcelReport);
+    document.getElementById('templateFile').addEventListener('change',async event=>{const file=event.target.files[0];if(!file)return;try{const payload=JSON.parse(await file.text());const fields=payload.fields||payload;if(!fields||typeof fields!=='object')throw new Error('invalid');applyValues(fields);setTemplateStatus(`已调取模板：${file.name}`);}catch{setTemplateStatus('模板读取失败，请选择本计算器导出的 JSON 文件。');}finally{event.target.value='';}});
+    async function refreshExchangeRate(){const input=document.getElementById('fx');try{const response=await fetch('https://api.frankfurter.dev/v2/rate/USD/CNY',{cache:'no-store'});if(!response.ok)throw new Error('request failed');const data=await response.json(),rate=Number(Array.isArray(data)?data[0]?.rate:data.rate);if(!Number.isFinite(rate)||rate<=0)throw new Error('invalid rate');input.value=two(rate);render();}catch{ /* Keep the visible prefill when the rate provider is unavailable. */ }}
+    if(document.body.dataset.newProduct==='true'||new URLSearchParams(window.location.search).has('newProduct'))applyValues(blank);
+    render();refreshExchangeRate();
+  </script>
+  <script>
+    // Public web edition: the service URL is public; the admin secret never appears here.
+    window.LICENSE_API_BASE = "https://fba-profit-calculator-license.johnnylin1227.workers.dev";
+    window.APP_VERSION = "1.0.0-web";
+    (() => {
+      const API_BASE = window.LICENSE_API_BASE.replace(/\/$/, "");
+      const STORAGE_KEY = "fba-profit-license-web-v1";
+      const DEVICE_KEY = "fba-profit-browser-id-v1";
+      const now = () => Date.now();
+      const load = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      const save = value => localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+      const browserId = () => { let id = localStorage.getItem(DEVICE_KEY); if (!id) { id = crypto.randomUUID(); localStorage.setItem(DEVICE_KEY, id); } return id; };
+      const usableOffline = license => license && new Date(license.offline_valid_until).getTime() > now();
+      const request = async (path, body) => { const response = await fetch(`${API_BASE}${path}`, { method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(body) }); const data = await response.json().catch(() => ({})); if (!response.ok || !data.ok) throw new Error(data.error || "授权服务暂时不可用。"); return data; };
+      const unlock = () => { document.documentElement.classList.remove("license-locked"); document.getElementById("licenseGate")?.remove(); };
+      const lock = (message = "请输入激活码以继续使用。") => {
+        document.documentElement.classList.add("license-locked"); document.getElementById("licenseGate")?.remove();
+        const gate = document.createElement("section"); gate.id = "licenseGate";
+        gate.innerHTML = `<div class="license-card"><p class="license-kicker">FBA PROFIT CALCULATOR</p><h1>激活网页版</h1><p class="license-copy">本工具为单浏览器个人授权。首次联网激活后，临时断网最多可继续使用 14 天。</p><label>激活码<input id="licenseCodeInput" autocomplete="off" placeholder="FBA-XXXX-XXXX-XXXX"></label><button id="licenseActivate">立即激活</button><p id="licenseMessage" role="status">${message}</p><small>退款、违规转售或授权撤销后，工具将停止使用。</small></div>`;
+        document.body.append(gate); const input = gate.querySelector("#licenseCodeInput");
+        gate.querySelector("#licenseActivate").addEventListener("click", async () => { const status = gate.querySelector("#licenseMessage"); try { status.textContent = "正在激活…"; const license_code = input.value.trim().toUpperCase(); const result = await request("/v1/activate", { license_code, device_id:browserId(), device_name:`${navigator.platform || "Desktop"} · ${navigator.userAgent.slice(0,48)}`, app_version:window.APP_VERSION }); save({license_code, offline_valid_until:result.offline_valid_until}); unlock(); } catch (error) { status.textContent = error.message; } }); input.focus();
+      };
+      window.addEventListener("DOMContentLoaded", async () => { const license = load(); if (!license) return lock(); try { const result = await request("/v1/verify", {license_code:license.license_code, device_id:browserId(), app_version:window.APP_VERSION}); save({...license, offline_valid_until:result.offline_valid_until}); unlock(); } catch (error) { if (usableOffline(license)) unlock(); else lock(error.message); } });
+    })();
+  </script>
 </body>
 </html>
